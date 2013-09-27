@@ -38,7 +38,7 @@
         function signIn() {
             alert("Pressed");
             $.ajax({
-                //http://www.reportninja.org/WebServices/WebService.asmx
+                
                 type: "POST",
                 //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
                 //url: "WebService.asmx/btnLogIn_Click",
@@ -109,311 +109,311 @@
             });
         }
 
-        function getReports() {
-            alert("Pressed");
-            $.ajax({
-                type: "POST",
-                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                url: "http://www.reportninja.org/WebServices/WebService.asmx/LoadReports",
-                //url: "WebService.asmx/LoadReports",
-                data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response != null && response != "") {
-                        var prods = response.d;
-                        /*if (prods=="true")
-                        {
-                        //alert("yes");
-                        window.location="Home.htm";
-                        }*/
-                        //alert(prods);
-                        //return prods.SchoolName;
-                    }
-                    else {
-                        alert("No data to display");
-                        alert(response.d);
-                    }
-                },
-                error: function (e) {
-                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
-                }
+        //function getReports() {
+        //    alert("Pressed");
+        //    $.ajax({
+        //        type: "POST",
+        //        //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+        //        //url: "http://www.reportninja.org/WebServices/WebService.asmx/LoadReports",
+        //        url: "WebService.asmx/LoadReports",
+        //        data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
+        //            if (response != null && response != "") {
+        //                var prods = response.d;
+        //                /*if (prods=="true")
+        //                {
+        //                //alert("yes");
+        //                window.location="Home.htm";
+        //                }*/
+        //                //alert(prods);
+        //                //return prods.SchoolName;
+        //            }
+        //            else {
+        //                alert("No data to display");
+        //                alert(response.d);
+        //            }
+        //        },
+        //        error: function (e) {
+        //            $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+        //        }
 
-            });
-
-
-        }
-
-        function UserLogin() {
-            alert("pressed");
-            $.ajax({
-                type: "POST",
-                //url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
-                url: "http://www.reportninja.org/WebServices/WebService.asmx/MobileAppGetSchoolUserByEmailAndPassword",
-                //url: "Webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
-                data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response.d != null && response.d != "") {
-                        var prods = response.d;
-                        $("#Something").show();
-                        $("#wraper").hide();
-                        $.each(prods, function (index, prod) {
-                            var schooluserid = prod.SchoolUserId;
-                            var username = prod.FirstName + " " + prod.LastName;
-                            $.ajax({
-                                type: "POST",
-                                //url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
-                                url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchools_SchoolCodeWise",
-                                 //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
-                                data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success: function (response) {
-                                    if (response != null && response != "") {
-                                        alert(response);
-                                        var prods = response.d;
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
-                                        return prods.SchoolName;
-                                    }
-                                    else {
-                                        alert("No data to display");
-                                        alert(response.d);
-                                    }
-                                },
-                                error: function (e) {
-                                    if (flag3 == "false") {
-                                        flag3 = "true";
-                                    }
-                                }
-                            });
-                        });
-                    }
-                    else {
-                        if (flag1 == "false") {
-                            flag1 = "true";
-                        }
-                    }
-                },
-                error: function (e) {
-                    if (flag3 == "false") {
-                        flag3 = "true";
-                    }
-                }
-            });
-
-            return false;
-        }
-
-        function LoginBusinessAdmin() {
-            $.ajax({
-                type: "POST",
-                //url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolByEmailPassword",
-                //url: "http://www.reportninja.org/WebServices/WebService.asmx/MobileAppGetSchoolByEmailPassword",
-                url: "Webservice.asmx/MobileAppGetSchoolByEmailPassword",
-                data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response.d != null && response.d != "") {
-                        var prods = response.d;
-                        $("#Something").show();
-                        $("#wraper").hide();
-                        $.each(prods, function (index, prod) {
-                            var schooluserid = prod.SchoolUserId;
-                            //var username = prod.FirstName + " " + prod.LastName;
-                            var username = "Admin";
-                            $.ajax({
-                                type: "POST",
-                                //url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
-                                url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchools_SchoolCodeWise",
-                                //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
-                                data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success: function (response) {
-                                    if (response != null && response != "") {
-                                        var prods = response.d;
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
-                                        return prods.SchoolName;
-                                    }
-                                    else {
-                                        alert("No data to display");
-                                        alert(response.d);
-                                    }
-                                },
-                                error: function (e) {
-                                    if (flag4 == "false") {
-                                        flag4 = "true";
-                                    }
-                                }
-                            });
-                        });
-                    }
-                    else {
-                        if (flag2 == "false") {
-                            flag2 = "true";
-                        }
-                    }
-                },
-                error: function (e) {
-                    if (flag4 == "false") {
-                        flag4 = "true";
-                    }
-                }
-            });
-
-            return false;
-        }
-
-        function LoginBackOfficeUser() {
-            $.ajax({
-                type: "POST",
-                //url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
-                url: "http://www.reportninja.org/WebServices/WebService.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
-                //url: "Webservice.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
-                data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response.d != null && response.d != "") {
-                        var prods = response.d;
-                        $("#Something").show();
-                        $("#wraper").hide();
-                        $.each(prods, function (index, prod) {
-                            var schooluserid = prod.SchoolUserId;
-                            //var username = prod.FirstName + " " + prod.LastName;
-                            var username = "Back User";
-                            //alert("School Code::::" + prod.SchoolId);
-                            $.ajax({
-                                type: "POST",
-                                //url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchool_SchoolIdWise",
-                                url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchool_SchoolIdWise",
-                                //url: "Webservice.asmx/GetSchool_SchoolIdWise",
-                                data: "{'SchoolId': '" + prod.SchoolId + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success: function (response) {
-                                    if (response != null && response != "") {
-                                        var prods = response.d;
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
-                                        return prods.SchoolName;
-                                    }
-                                    else {
-                                        alert("No data to display");
-                                        alert(response.d);
-                                    }
-                                },
-                                error: function (e) {
-                                    if (flag3 == "true" && flag4 == "true") {
-                                        $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
-                                    }
-                                }
-                            });
-                        });
-                    }
-                    else {
-                        if (flag1 == "true" && flag2 == "true") {
-                            alert("Wrong Username or Password.");
-                        }
-                    }
-                },
-                error: function (e) {
-                    if (flag3 == "true" && flag4 == "true") {
-                        $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
-                    }
-                }
-            });
-
-            return false;
-        }
-
-        function GetSchoolNameBySchoolCode(code) {
-            $.ajax({
-                type: "POST",
-                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchools_SchoolCodeWise",
-                //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
-                data: "{'strSchoolCode': '" + code + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response != null && response != "") {
-                        var prods = response.d;
-                        //alert(prods.SchoolName);
-                        return prods.SchoolName;
-                    }
-                    else {
-                        alert("No data to display");
-                        alert(response.d);
-                    }
-                },
-                error: function (e) {
-                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
-                }
-            });
+        //    });
 
 
-        }
+        //}
 
-        function AuthenticateSoapHeader() {
-            $.ajax({
-                type: "POST",
-                url: "http://www.reportninja.org/WebServices/WebService.asmx/AuthenticateSoapHeader",
-                //url: "Webservice.asmx/AuthenticateSoapHeader",
-                //data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response != null && response != "") {
-                        alert(response.d);
-                    }
-                    else {
-                        alert("No data to display");
-                        alert(response.d);
-                    }
-                },
-                error: function (e) {
-                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
-                }
-            });
-        }
+        //function UserLogin() {
+        //    alert("pressed");
+        //    $.ajax({
+        //        type: "POST",
+        //        //url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
+        //        //url: "http://www.reportninja.org/WebServices/WebService.asmx/MobileAppGetSchoolUserByEmailAndPassword",
+        //        url: "Webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
+        //        data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
+        //            if (response.d != null && response.d != "") {
+        //                var prods = response.d;
+        //                $("#Something").show();
+        //                $("#wraper").hide();
+        //                $.each(prods, function (index, prod) {
+        //                    var schooluserid = prod.SchoolUserId;
+        //                    var username = prod.FirstName + " " + prod.LastName;
+        //                    $.ajax({
+        //                        type: "POST",
+        //                        //url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
+        //                        //url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchools_SchoolCodeWise",
+        //                        url: "Webservice.asmx/GetSchools_SchoolCodeWise",
+        //                        data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
+        //                        contentType: "application/json; charset=utf-8",
+        //                        dataType: "json",
+        //                        success: function (response) {
+        //                            if (response != null && response != "") {
+        //                                alert(response);
+        //                                var prods = response.d;
+        //                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+        //                                return prods.SchoolName;
+        //                            }
+        //                            else {
+        //                                alert("No data to display");
+        //                                alert(response.d);
+        //                            }
+        //                        },
+        //                        error: function (e) {
+        //                            if (flag3 == "false") {
+        //                                flag3 = "true";
+        //                            }
+        //                        }
+        //                    });
+        //                });
+        //            }
+        //            else {
+        //                if (flag1 == "false") {
+        //                    flag1 = "true";
+        //                }
+        //            }
+        //        },
+        //        error: function (e) {
+        //            if (flag3 == "false") {
+        //                flag3 = "true";
+        //            }
+        //        }
+        //    });
 
-        function Encrypt(password) {
-            $.ajax({
-                type: "POST",
-                url: "http://www.reportninja.org/WebServices/WebService.asmx/Encrypt",
-                //url: "Webservice.asmx/Encrypt",
-                data: "{'text':'" + password + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response != null && response != "") {
-                        alert(response.d);
-                        //                        var prods = response.d;
-                        //                        $.each(prods, function (index, prod) {
-                        //                            $("#Something").append("<strong>" + prod.SchoolCode + "</strong>" + "<br/>");
-                        //                        });
-                    }
-                    else {
-                        alert("No data to display");
-                        alert(response.d);
-                    }
-                },
-                //                success: function (list) {
-                //                    $("#Something").append("<ul id='bullets'></ul>");
-                //                    for (i = 0; i < 5; i++) {
-                //                        $("#bullets").append("<li>" + i + "</li>");
-                //                    }
-                //                },
-                error: function (e) {
-                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
-                }
-            });
+        //    return false;
+        //}
+
+        //function LoginBusinessAdmin() {
+        //    $.ajax({
+        //        type: "POST",
+        //        //url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolByEmailPassword",
+        //        //url: "http://www.reportninja.org/WebServices/WebService.asmx/MobileAppGetSchoolByEmailPassword",
+        //        url: "Webservice.asmx/MobileAppGetSchoolByEmailPassword",
+        //        data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
+        //            if (response.d != null && response.d != "") {
+        //                var prods = response.d;
+        //                $("#Something").show();
+        //                $("#wraper").hide();
+        //                $.each(prods, function (index, prod) {
+        //                    var schooluserid = prod.SchoolUserId;
+        //                    //var username = prod.FirstName + " " + prod.LastName;
+        //                    var username = "Admin";
+        //                    $.ajax({
+        //                        type: "POST",
+        //                        //url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
+        //                        //url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchools_SchoolCodeWise",
+        //                        url: "Webservice.asmx/GetSchools_SchoolCodeWise",
+        //                        data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
+        //                        contentType: "application/json; charset=utf-8",
+        //                        dataType: "json",
+        //                        success: function (response) {
+        //                            if (response != null && response != "") {
+        //                                var prods = response.d;
+        //                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+        //                                return prods.SchoolName;
+        //                            }
+        //                            else {
+        //                                alert("No data to display");
+        //                                alert(response.d);
+        //                            }
+        //                        },
+        //                        error: function (e) {
+        //                            if (flag4 == "false") {
+        //                                flag4 = "true";
+        //                            }
+        //                        }
+        //                    });
+        //                });
+        //            }
+        //            else {
+        //                if (flag2 == "false") {
+        //                    flag2 = "true";
+        //                }
+        //            }
+        //        },
+        //        error: function (e) {
+        //            if (flag4 == "false") {
+        //                flag4 = "true";
+        //            }
+        //        }
+        //    });
+
+        //    return false;
+        //}
+
+        //function LoginBackOfficeUser() {
+        //    $.ajax({
+        //        type: "POST",
+        //        //url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
+        //        //url: "http://www.reportninja.org/WebServices/WebService.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
+        //        url: "Webservice.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
+        //        data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
+        //            if (response.d != null && response.d != "") {
+        //                var prods = response.d;
+        //                $("#Something").show();
+        //                $("#wraper").hide();
+        //                $.each(prods, function (index, prod) {
+        //                    var schooluserid = prod.SchoolUserId;
+        //                    //var username = prod.FirstName + " " + prod.LastName;
+        //                    var username = "Back User";
+        //                    //alert("School Code::::" + prod.SchoolId);
+        //                    $.ajax({
+        //                        type: "POST",
+        //                        //url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchool_SchoolIdWise",
+        //                        //url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchool_SchoolIdWise",
+        //                        url: "Webservice.asmx/GetSchool_SchoolIdWise",
+        //                        data: "{'SchoolId': '" + prod.SchoolId + "'}",
+        //                        contentType: "application/json; charset=utf-8",
+        //                        dataType: "json",
+        //                        success: function (response) {
+        //                            if (response != null && response != "") {
+        //                                var prods = response.d;
+        //                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+        //                                return prods.SchoolName;
+        //                            }
+        //                            else {
+        //                                alert("No data to display");
+        //                                alert(response.d);
+        //                            }
+        //                        },
+        //                        error: function (e) {
+        //                            if (flag3 == "true" && flag4 == "true") {
+        //                                $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+        //                            }
+        //                        }
+        //                    });
+        //                });
+        //            }
+        //            else {
+        //                if (flag1 == "true" && flag2 == "true") {
+        //                    alert("Wrong Username or Password.");
+        //                }
+        //            }
+        //        },
+        //        error: function (e) {
+        //            if (flag3 == "true" && flag4 == "true") {
+        //                $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+        //            }
+        //        }
+        //    });
+
+        //    return false;
+        //}
+
+        //function GetSchoolNameBySchoolCode(code) {
+        //    $.ajax({
+        //        type: "POST",
+        //        //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+        //        //url: "http://www.reportninja.org/WebServices/WebService.asmx/GetSchools_SchoolCodeWise",
+        //        url: "Webservice.asmx/GetSchools_SchoolCodeWise",
+        //        data: "{'strSchoolCode': '" + code + "'}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
+        //            if (response != null && response != "") {
+        //                var prods = response.d;
+        //                //alert(prods.SchoolName);
+        //                return prods.SchoolName;
+        //            }
+        //            else {
+        //                alert("No data to display");
+        //                alert(response.d);
+        //            }
+        //        },
+        //        error: function (e) {
+        //            $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+        //        }
+        //    });
 
 
-        }
+        //}
+
+        //function AuthenticateSoapHeader() {
+        //    $.ajax({
+        //        type: "POST",
+        //        //url: "http://www.reportninja.org/WebServices/WebService.asmx/AuthenticateSoapHeader",
+        //        url: "Webservice.asmx/AuthenticateSoapHeader",
+        //        //data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
+        //            if (response != null && response != "") {
+        //                alert(response.d);
+        //            }
+        //            else {
+        //                alert("No data to display");
+        //                alert(response.d);
+        //            }
+        //        },
+        //        error: function (e) {
+        //            $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+        //        }
+        //    });
+        //}
+
+        //function Encrypt(password) {
+        //    $.ajax({
+        //        type: "POST",
+        //        //url: "http://www.reportninja.org/WebServices/WebService.asmx/Encrypt",
+        //        url: "Webservice.asmx/Encrypt",
+        //        data: "{'text':'" + password + "'}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
+        //            if (response != null && response != "") {
+        //                alert(response.d);
+        //                //                        var prods = response.d;
+        //                //                        $.each(prods, function (index, prod) {
+        //                //                            $("#Something").append("<strong>" + prod.SchoolCode + "</strong>" + "<br/>");
+        //                //                        });
+        //            }
+        //            else {
+        //                alert("No data to display");
+        //                alert(response.d);
+        //            }
+        //        },
+        //        //                success: function (list) {
+        //        //                    $("#Something").append("<ul id='bullets'></ul>");
+        //        //                    for (i = 0; i < 5; i++) {
+        //        //                        $("#bullets").append("<li>" + i + "</li>");
+        //        //                    }
+        //        //                },
+        //        error: function (e) {
+        //            $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+        //        }
+        //    });
+
+
+        //}
 
 
         
