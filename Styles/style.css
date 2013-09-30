@@ -10,12 +10,12 @@
 }
 .input-area {
     margin: 20px 0 0 0px;
-    width: 100%;
+    width: 98%;
     height: 40px;
     border: solid 1px white;
     background-color: #1a4b4f;
     color:white;
-    padding-left:10px;
+    padding-left:1.8%;
 }
 ::-webkit-input-placeholder { color:white; font-family:Arial; font-size:15px;}
 ::-moz-placeholder { color:white; font-family:Arial; font-size:15px;} /* firefox 19+ */
