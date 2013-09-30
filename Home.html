@@ -160,7 +160,7 @@
             
         }
     </script>
-  <!--<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <!--<link rel="stylesheet" href="/resources/demos/style.css" />-->
   <script>
       $(function () {
@@ -187,17 +187,20 @@
             //alert("after");
             //alert(flag);
             if (flag == "true") {
+                alert("Something");
                 $.ajax({
-
+                    
                     type: "POST",
                     //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                    url: "http://www.reportninja.org/WebServices/WebService.asmx/LoadReports",
+                    url: "http://rnws1.2bvision.com/WebService.asmx/LoadReports",
+                    //url: "http://www.reportninja.org/WebServices/WebService.asmx/LoadReports",
                     //url: "WebService.asmx/LoadReports",
                     data: "{'id': '" + Id + "'}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
                         if (response != null && response != "") {
+                            alert("Something");
                             alert(response);
                             flag = "false";
                             alert(flag);
@@ -306,7 +309,7 @@
             var name = document.getElementById("txtReportName").value;
             var password = document.getElementById("txtPassword").value;
             var ssss=$.Storage.get("ReportId");
-            window.location = "Home.htm";
+            window.location.href = "Home.html";
             alert("after");
             //$("#popUp").attr("href", "EditReport.htm?reportId=" + $.Storage.get("ReportId") + "&reportName=" + name + "&reportPassword=" + password + "");*/
         }
