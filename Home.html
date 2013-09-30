@@ -174,7 +174,7 @@
     <!-- Accordion ends -->
     <script type="text/javascript">
         var flag = "true";
-        alert("Doc dot ready");
+       // alert("Doc dot ready");
         $(document).ready(function () {
             //$(".buttonDiv").hide();
             var Id = getUrlVars()["id"];
@@ -187,7 +187,7 @@
             //alert("after");
             //alert(flag);
             if (flag == "true") {
-                alert("Something");
+         //       alert("Something");
                 $.ajax({
                     
                     type: "POST",
@@ -200,15 +200,15 @@
                     dataType: "json",
                     success: function (response) {
                         if (response != null && response != "") {
-                            alert("Something");
-                            alert(response);
+           //                 alert("Something");
+             //               alert(response);
                             flag = "false";
-                            alert(flag);
+               //             alert(flag);
                             var prods = response.d;
                             var myarray = prods.split(';');
                             for (var i = 0; i < myarray.length - 1; i++) {
                                 var array = myarray[i].split(",");
-                                alert("array of 6"+array[6]);
+                 //               alert("array of 6"+array[6]);
                                 if (array[6] == "True") {
                                     //alert("if");
                                     $("#accordion").append("<div class='accordion_head'> " + "<p class='heading3'>" + array[0] + "</p>" + "<div class='button_drop'>" + "</div>" + "</div>" + "<div>"  + "<div class='sub_menu'> " + "<ul>" + "<li>" + "<a class='buttonDiv pop' id='" + array[0] + "," + array[4] + "," + array[5] + "'>" + "Edit" + "</a>"+ "</li>" + "<li>" + "<a class='buttonDiv' href='http://www.reportninja.org/MobileViewer?i=" + array[1] + "&v=" + array[2] + "&p=" + array[3] + "'>" + "View" + "</a>"+ "</li>" + "<li>" +" <a class='buttonDiv' href='#'>" + "Generate" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='sendReport.htm?id=" + Id + "&username=" + username + "&reportName=" + array[0] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Send" + "</a>" + "</li>"  + "<li>" + "<a class='buttonDiv' href='LockReport.htm?statusReport=" + array[6] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Locked" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DeleteReport.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "'>" + "Delete" + "</a>" + "</li>" + "</ul>" + "</div>" + "</div>");

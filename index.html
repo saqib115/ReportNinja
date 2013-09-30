@@ -36,7 +36,7 @@
         var flag4 = "false";
 
         function signIn() {
-            alert("Pressed");
+            //alert("Pressed");
             $.ajax({
 
                 type: "POST",
@@ -48,7 +48,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Success");
+                    //alert("Success");
                     if (response != null && response != "") {
                         
                         var prods = response.d;
@@ -448,11 +448,7 @@
         <div style="width: 97%; margin-left: 1.5%; position: absolute; bottom:20px">
             <!-- login -->
             <div style="width: 100%; height: auto; margin: 0px auto; position: relative;">
-                <center>
-                    <div style="background: url(images/logo_communicator.png); display:none; width: 205px; height: 67px;
-                        margin: 50px auto;">
-                    </div>
-                </center>
+                
                 <div style="float: left; width: 100%; height: auto">
                     <!--<div class="input-text">k
                         User Name:</div>-->
