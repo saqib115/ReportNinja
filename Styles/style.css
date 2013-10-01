@@ -4,11 +4,11 @@ body {
     overflow:hidden;
 }
 .container {
-    background-image: url('http://localhost:2534/Reportninja/Images/splash-background.png');
+    background-image: url('http://rnws1.2bvision.com/Images/splash-background.png');
 	background-repeat: no-repeat;
 	background-size:cover;
 	background-position:top;
-    min-height:680px;
+    min-height:550px;
     height:100%;
     width:100%;
 }
@@ -22,7 +22,6 @@ body {
     height:100%;
     width:100%;
     }
-
 }*/
 .input-text
 {
@@ -32,7 +31,7 @@ body {
     color:white;
 }
 .input-area {
-    margin: 20px 0 0 0px;
+    margin: 2% 0 0 0px;
     width: 98%;
     height: 40px;
     border: solid 1px white;
