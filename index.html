@@ -36,7 +36,7 @@
         var flag4 = "false";
 
         function signIn() {
-            //alert("Pressed");
+            alert("Pressed");
             $.ajax({
 
                 type: "POST",
@@ -48,9 +48,9 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    //alert("Success");
+                    alert("Success");
                     if (response != null && response != "") {
-                        
+                        alert("ifpart");
                         var prods = response.d;
                         //alert(prods);
                         if (prods == "false") {
@@ -58,6 +58,7 @@
                         }
                         else
                         {
+                            alert("Else Part");
                             var splitString = prods.split(",");
                             //window.location = "http://www.google.com";
                             window.location = "http://rnws1.2bvision.com/test2.html?id=" + splitString[0] + "&username=" + splitString[1] + "";
