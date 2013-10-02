@@ -74,11 +74,12 @@
             $.Storage.set("username", username);
             alert($.Storage.get("username"));
             $("#button1").click(function MyReports() {
+                var varID;
                 alert("1");
-                Id = $.Storage.get("id");
-                alert(Id);
+                varID = $.Storage.get("id");
+                alert(varID);
                 //window.location = "http://rnws1.2bvision.com/home.html";
-                window.location.href = "http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username;
+                window.location.href = "http://rnws1.2bvision.com/home.html?id=" + varID + "&username=" + username;
                 //alert("2");
             });
             
