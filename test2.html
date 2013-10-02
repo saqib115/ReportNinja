@@ -73,21 +73,22 @@
             alert($.Storage.get("id"));
             $.Storage.set("username", username);
             alert($.Storage.get("username"));
-            $("#button1").click(function MyReports() {
-                var varID;
-                alert("1");
-                varID = $.Storage.get("id");
-                alert(varID);
-                //window.location = "http://rnws1.2bvision.com/home.html";
-                window.location.href = "http://rnws1.2bvision.com/home.html?id=" + varID + "&username=" + username;
-                //alert("2");
-            });
+            //$("#button1").click(function MyReports() {
+            //    var varID;
+            //    alert("1");
+            //    varID = $.Storage.get("id");
+            //    alert(varID);
+            //    //window.location = "http://rnws1.2bvision.com/home.html";
+            //    window.location.href = "http://rnws1.2bvision.com/home.html?id=" + varID + "&username=" + username;
+            //    //alert("2");
+            //});
             
         });
         function MyReports() {
-            alert("1");
-            window.location.href = "http://rnws1.2bvision.com/home.html";
-            //window.location = "http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username + "";
+            var username = $.Storage.get("username");
+            var Id = $.Storage.get("id");
+            //window.location = "http://rnws1.2bvision.com/home.html";
+            window.location.href = "http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username;
             //alert("2");
         }
 
@@ -107,7 +108,7 @@
     <div class="home_container">
         <div class="buttons_container">
             <div class="home_button">
-                <div class="button" id="button1" onclick="MyReports()" >
+                <div class="button" id="button1" onclick="MyReports();" >
                     <p>MY REPORTS</p>
                     </div>
                 <div class="arrow">
