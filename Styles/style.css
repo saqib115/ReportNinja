@@ -1,20 +1,23 @@
 ﻿@charset "utf-8";
 /* CSS Document */
 body {
-    overflow:hidden;
+    
 }
 
 .container {
     background-image: url('http://rnws1.2bvision.com/Images/splash-background.png');
 	background-repeat: no-repeat;
-	background-size: cover;
-	background-position:center;
+	background-size: 100%;
+	background-position:top;
     background-attachment:fixed;
+    position: fixed; 
+  top: 0; 
+  left: 0; 
     
-    min-height:550px;
-    /*min-width:370px;*/
-    /*height:100%;
-    width:100%;*/
+    /*min-height:550px;
+    min-width:370px;*/
+    height:100%;
+    width:100%;
 }
 
 .input-text
