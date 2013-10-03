@@ -48,11 +48,11 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    //alert("Success");
+                    alert("Success");
                     if (response != null && response != "") {
                         
                         var prods = response.d;
-                        //alert(prods);
+                        alert(prods);
                         if (prods == "false") {
                             alert("Wrong username and password");
                         }
