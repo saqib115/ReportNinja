@@ -50,18 +50,17 @@
                 success: function (response) {
                     alert("Success");
                     if (response != null && response != "") {
-                        //alert("ifpart");
+                        
                         var prods = response.d;
-                        //alert(prods);
+                        alert(prods);
                         if (prods == "false") {
                             alert("Wrong username and password");
                         }
                         else
                         {
-                            alert("Else Part");
                             var splitString = prods.split(",");
                             //window.location = "http://www.google.com";
-                           window.location = "'http://rnws1.2bvision.com/test2.html?id=' + splitString[0] + '&username=' + splitString[1]";
+                            window.location = "http://rnws1.2bvision.com/test2.html?id=" + splitString[0] + "&username=" + splitString[1];
                         }
                         
                         //alert(prods);
