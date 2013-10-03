@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <!--<style type="text/css">
+    <style type="text/css">
 
         .home_container {
             background-image: url('http://rnws1.2bvision.com/Images/splash-background.png');
@@ -56,30 +56,42 @@
             margin: -25px 12px 0 0px;
             
         }
-    </style>-->
+    </style>
+    <link rel="stylesheet" href="Styles/style.css" type="text/css" />
     <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.Storage.js"></script>
     <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
     
     <script type="text/javascript">
         $(document).ready(function () {
-            alert("hey");
+            //alert("hey");
+            var Id;
             //$(".buttonDiv").hide();
             //var Id = 2;
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
-            alert(Id);
+            //alert(Id);
             $.Storage.set("id", Id);
-            alert($.Storage.get("id"));
+            //alert($.Storage.get("id"));
             $.Storage.set("username", username);
-            alert($.Storage.get("username"));
-            
+            //alert($.Storage.get("username"));
+            //$("#button1").click(function MyReports() {
+            //    var varID;
+            //    alert("1");
+            //    varID = $.Storage.get("id");
+            //    alert(varID);
+            //    //window.location = "http://rnws1.2bvision.com/home.html";
+            //    window.location.href = "http://rnws1.2bvision.com/home.html?id=" + varID + "&username=" + username;
+            //    //alert("2");
+            //});
         });
-        function MyReports() {
+
+            function MyReports() {
             var username = $.Storage.get("username");
             var Id = $.Storage.get("id");
-            //window.location = "http://rnws1.2bvision.com/home.html";
-            window.location.href = "http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username;
+                //window.location = "http://rnws1.2bvision.com/home.html";
+            //window.location = "Home.html?id=" + Id + "&username=" + username;
+            window.location.replace("http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username);
             //alert("2");
         }
 
